@@ -6,7 +6,8 @@ export default Ember.Route.extend({
     controller.setProperties({
       lat: 45.4907965,
       lng: -122.613058,
-      zoom: 11
+      zoom: 11,
+      markers: []
      });
   }
 });

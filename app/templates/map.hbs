@@ -1,1 +1,11 @@
-{{g-maps name='my-map' lat=lat lng=lng zoom=zoom }}
+{{g-maps name='my-map' lat=lat lng=lng zoom=zoom markers=markers}}
+
+Plot Latitude:
+{{input value=markerLat }}
+Plot Longitude:
+{{input value=markerLng }}
+
+<button {{action 'plotPoints' markerLat markerLng}} > Plot Points!</button>
+
+<!-- 45.510529 -->
+<!-- -122.5259827 -->
