@@ -7,7 +7,12 @@
          polygons=polygons
          mapType=mapType}}
 
+<div class="chart-container">
+  {{vertical-bar-chart data=elevationData height=200 width=200}}
+</div>
+
 <div>
+  Map Type:
   <button {{action 'setMapType' 'roadmap'}}>roadmap</button>
   <button {{action 'setMapType' 'satellite'}}>satellite</button>
   <button {{action 'setMapType' 'hybrid'}}>hybrid</button>

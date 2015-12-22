@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
     setMarkers: function (coordinateArray) {
       const routePoints = [];
 
-      coordinateArray.forEach(function(point, idx) {
+      coordinateArray.forEach(function(point) {
         const lat = $(point).attr('lat');
         const lng = $(point).attr('lon');
 
@@ -36,7 +36,11 @@ export default Ember.Controller.extend({
       this.set('markers', routePoints);
 
       const midPoint = (coordinateArray.length / 2);
-      this.focusMap(midPoint)
+      this.focusMap(midPoint);
+    },
+
+    setElevation: function (elevationArray) {
+      this.set('elevationData', elevationArray);
     }
   }
 });

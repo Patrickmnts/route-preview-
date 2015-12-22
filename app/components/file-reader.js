@@ -7,16 +7,27 @@ export default Ember.Component.extend({
     this.send('readSingleFile', evt);
   }.on('change'),
 
-  plotContents: function (string) {
+  parseFile: function (string) {
     const parser = new window.DOMParser();
     const xmlContent = parser.parseFromString(string, 'text/xml');
+
+    this.plotContents(xmlContent);
+    this.plotElevation(xmlContent);
+  },
+
+  plotContents: function (xmlContent) {
     const coordinateHTMLElements = xmlContent.getElementsByTagName('trkpt')
     const coordinateArray = [].slice.call(coordinateHTMLElements);
 
     this.sendAction('setMarkers', coordinateArray);
   },
 
+  plotElevation: function (xmlContent) {
+    const elevationHTMLElements = xmlContent.getElementsByTagName('ele');
+    const elevationArray = [].slice.call(elevationHTMLElements);
 
+    this.sendAction('setElevation', elevationArray);
+  },
 
   actions: {
     readSingleFile: function(evt) {
@@ -29,7 +40,7 @@ export default Ember.Component.extend({
         var contents;
         r.onload = function(e) {
   	      contents = e.target.result;
-          self.plotContents(contents);
+          self.parseFile(contents);
         };
         r.readAsText(file);
 
