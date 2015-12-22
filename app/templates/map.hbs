@@ -1,11 +1,31 @@
-{{g-maps name='my-map' lat=lat lng=lng zoom=zoom markers=markers}}
+{{g-maps name='my-map'
+         lat=lat
+         lng=lng
+         zoom=zoom
+         markers=markers
+         polylines=polylines
+         polygons=polygons
+         mapType=mapType}}
 
-Plot Latitude:
-{{input value=markerLat }}
-Plot Longitude:
-{{input value=markerLng }}
+<div>
+  <button {{action 'setMapType' 'roadmap'}}>roadmap</button>
+  <button {{action 'setMapType' 'satellite'}}>satellite</button>
+  <button {{action 'setMapType' 'hybrid'}}>hybrid</button>
+  <button {{action 'setMapType' 'terrain'}}>terrain</button>
+</div>
 
-<button {{action 'plotPoints' markerLat markerLng}} > Plot Points!</button>
+<div class="">
+  Plot Latitude:
+  {{input value=markerLat }}
+  Plot Longitude:
+  {{input value=markerLng }}
+  <button {{action 'plotPoints' markerLat markerLng}} > Plot Points!</button>
+</div>
+
+<div class="">
+  Or, Give us a file.
+  {{file-reader controller=this}}
+</div>
 
 <!-- 45.510529 -->
 <!-- -122.5259827 -->
