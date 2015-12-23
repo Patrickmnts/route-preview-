@@ -1,38 +1,49 @@
-{{point-table markerData=markers elevationData=elevationData}}
-{{g-maps name='my-map'
-         lat=lat
-         lng=lng
-         zoom=zoom
-         markers=markers
-         mapType=mapType}}
+<div class="row">
+  <div class="row mt-10">
+    <div class="col-md-5">
+      <strong>GPX file</strong>
+      {{file-reader controller=this}}
+    </div>
 
-{{#if elevationData}}
-  <div class="chart-container">
-    {{scatter-chart dotRadius=2 data=elevationData color='red'}}
+    <div class="col-md-7">
+      Latitude:
+      {{input value=markerLat }}
+      Longitude:
+      {{input value=markerLng }}
+      <button {{action 'plotPoints' markerLat markerLng}} class='btn btn-primary' > Plot Point!</button>
+    </div>
   </div>
-{{/if}}
 
-<div>
-  Map Type:
-  <button {{action 'setMapType' 'roadmap'}}>roadmap</button>
-  <button {{action 'setMapType' 'satellite'}}>satellite</button>
-  <button {{action 'setMapType' 'hybrid'}}>hybrid</button>
-  <button {{action 'setMapType' 'terrain'}}>terrain</button>
+  <div class="mt-10 col-md-10">
+    Map Type:
+    <button class='btn btn-primary' {{action 'setMapType' 'roadmap'}}>roadmap</button>
+    <button class='btn btn-primary' {{action 'setMapType' 'satellite'}}>satellite</button>
+    <button class='btn btn-primary' {{action 'setMapType' 'hybrid'}}>hybrid</button>
+    <button class='btn btn-primary' {{action 'setMapType' 'terrain'}}>terrain</button>
+    <button class='btn btn-danger pull-right' {{action 'clearRoute'}}>Clear Route</button>
+  </div>
 </div>
 
-<div class="">
-  Plot Latitude:
-  {{input value=markerLat }}
-  Plot Longitude:
-  {{input value=markerLng }}
-  <button {{action 'plotPoints' markerLat markerLng}} > Plot Points!</button>
-</div>
+<div class="row">
+  <div class="col-md-10 mt-10">
+    {{g-maps name='my-map'
+    lat=lat
+    lng=lng
+    zoom=zoom
+    markers=markers
+    mapType=mapType}}
+  </div>
 
-<div class="">
-  Or, Give us a file.
-  {{file-reader controller=this}}
+  <div class="col-md-2 pull-right">
+    {{point-table markerData=markers elevationData=elevationData}}
+  </div>
+
+  {{#if elevationData}}
+    <div class="chart-container col-md-10">
+      {{scatter-chart dotRadius=2 data=elevationData color='red'}}
+    </div>
+  {{/if}}
 </div>
-<button {{action 'clearRoute'}}>Clear Route</button>
 
 <!-- 45.510529 -->
 <!-- -122.5259827 -->

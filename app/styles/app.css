@@ -1,12 +1,16 @@
 .ember-cli-g-map {
-    height: 600px;
-    width: 80%;
+  height: 600px;
 }
 
-.chart-container {
-  width: 80%;
+.mt-5 {
+  margin-top: 5px;
 }
 
-.coordinateTable {
-  float: right;
+.mt-10 {
+  margin-top: 10px;
+}
+
+td {
+  text-align: center;
+  margin-left: 5px;
 }
