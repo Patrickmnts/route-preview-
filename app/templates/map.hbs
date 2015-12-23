@@ -4,10 +4,7 @@
          lng=lng
          zoom=zoom
          markers=markers
-         polylines=polylines
-         polygons=polygons
          mapType=mapType}}
-
 
 {{#if elevationData}}
   <div class="chart-container">
@@ -35,6 +32,7 @@
   Or, Give us a file.
   {{file-reader controller=this}}
 </div>
+<button {{action 'clearRoute'}}>Clear Route</button>
 
 <!-- 45.510529 -->
 <!-- -122.5259827 -->

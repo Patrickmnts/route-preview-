@@ -9,6 +9,12 @@ export default Ember.Controller.extend({
   },
 
   actions: {
+    clearRoute: function() {
+      this.setProperties({ markers: [],
+                           elevationData: []
+                        });
+    },
+
     setMapType: function (type) {
       this.set('mapType', type);
     },
