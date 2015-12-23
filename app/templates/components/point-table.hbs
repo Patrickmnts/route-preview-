@@ -1,0 +1,31 @@
+<div class="coordinateTable">
+  {{#if tableData}}
+    Total Distance: <strong>{{routeTotalDistance}}kms</strong>
+    <table>
+      <tr>
+        <th>
+          Latitude
+        </th>
+        <th>
+          Longitude
+        </th>
+        <th>
+          Elevation
+        </th>
+      </tr>
+    {{#each tableData as |data|}}
+      <tr>
+        <td>
+          {{data.lat}}
+        </td>
+        <td>
+          {{data.lng}}
+        </td>
+        <td>
+          {{data.elevation}}
+        </td>
+      </tr>
+    {{/each}}
+    </table>
+  {{/if}}
+</div>

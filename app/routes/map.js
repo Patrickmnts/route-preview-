@@ -9,7 +9,8 @@ export default Ember.Route.extend({
       zoom: 10,
       mapType: 'hybrid',
       markers: [],
-      elevationData: [ 200, 400, 350, 600]
+      elevationData: [],
+      rawData: null
      });
   }
 });

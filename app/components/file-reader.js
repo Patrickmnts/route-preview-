@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   setMarkers: 'setMarkers',
+  setElevation: 'setElevation',
 
   observeChangesToFile: function (evt) {
     this.send('readSingleFile', evt);
@@ -11,6 +12,7 @@ export default Ember.Component.extend({
     const parser = new window.DOMParser();
     const xmlContent = parser.parseFromString(string, 'text/xml');
 
+    this.get('targetObject').set('rawData', xmlContent);
     this.plotContents(xmlContent);
     this.plotElevation(xmlContent);
   },

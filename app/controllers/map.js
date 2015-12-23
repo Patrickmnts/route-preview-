@@ -26,21 +26,34 @@ export default Ember.Controller.extend({
     setMarkers: function (coordinateArray) {
       const routePoints = [];
 
-      coordinateArray.forEach(function(point) {
-        const lat = $(point).attr('lat');
-        const lng = $(point).attr('lon');
+      coordinateArray.forEach(function(point, idx) {
+          const lat = $(point).attr('lat');
+          const lng = $(point).attr('lon');
 
-        routePoints.pushObject({ lat: lat, lng: lng });
+        if ( idx % 10 === 0 ) {
+          routePoints.pushObject({ id: idx,
+                                   lat: lat,
+                                   lng: lng
+                                 });
+        }
       });
 
       this.set('markers', routePoints);
 
-      const midPoint = (coordinateArray.length / 2);
+      const midPoint = (routePoints.length / 2);
       this.focusMap(midPoint);
     },
 
     setElevation: function (elevationArray) {
-      this.set('elevationData', elevationArray);
+      const elevationPoints = [];
+      elevationArray.forEach(function(point, idx) {
+        const ele = $(point).text();
+        if (idx % 10 === 0) {
+          elevationPoints.pushObject({ xValue: Number(idx), yValue: Number(ele), group: 'elevation'});
+        }
+      });
+
+      this.set('elevationData', elevationPoints);
     }
   }
 });

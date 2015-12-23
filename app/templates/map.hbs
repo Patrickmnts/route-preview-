@@ -1,3 +1,4 @@
+{{point-table markerData=markers elevationData=elevationData}}
 {{g-maps name='my-map'
          lat=lat
          lng=lng
@@ -7,9 +8,12 @@
          polygons=polygons
          mapType=mapType}}
 
-<div class="chart-container">
-  <!-- {{vertical-bar-chart data=elevationData height=200 width=200}} -->
-</div>
+
+{{#if elevationData}}
+  <div class="chart-container">
+    {{scatter-chart dotRadius=2 data=elevationData color='red'}}
+  </div>
+{{/if}}
 
 <div>
   Map Type:
